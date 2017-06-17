@@ -1,0 +1,423 @@
+/* Style Data URI Encoder
+
+Copyright (C) 2016 Eliastik (eliastiksofts.com)
+
+Ce fichier fait partie de Data URI Encoder.
+
+Data URI Encoder est un logiciel libre ; vous pouvez le redistribuer ou le
+modifier suivant les termes de la GNU General Public License telle que
+publiée par la Free Software Foundation ; soit la version 3 de la licence,
+soit (à votre gré) toute version ultérieure.
+
+Data URI Encoder est distribué dans l'espoir qu'il sera utile, mais SANS
+AUCUNE GARANTIE ; sans même la garantie tacite de QUALITÉ MARCHANDE ou
+d'ADÉQUATION à UN BUT PARTICULIER. Consultez la GNU General Public License
+pour plus de détails.
+
+Vous devez avoir reçu une copie de la GNU General Public License en même
+temps que Data URI Encoder ; si ce n'est pas le cas,
+consultez <http://www.gnu.org/licenses>. */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/OpenSans-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: url('fonts/OpenSans-Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: url('fonts/OpenSans-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('fonts/OpenSans-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 700;
+    src: url('fonts/OpenSans-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 800;
+    src: url('fonts/OpenSans-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 800;
+    src: url('fonts/OpenSans-ExtraBoldItalic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'IcoMoon-Free';
+    src: url('fonts/IcoMoon-Free.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+div#contenu {
+    margin: 8px;
+    margin-top: 72px;
+}
+body {
+    font-family: "Open Sans", Arial, Sans-Serif;
+    background-image: url(images/fond.png);
+    margin: 0;
+}
+#header,
+.menu,
+.menu > *,
+.menu a {
+    /* couleur du header et du menu */
+    background: #1abc9c;
+    color: #2c3e50;
+}
+/* header */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1030;
+    margin: 0;
+    -webkit-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    /* personnaliser selon l'appli */
+    border: 0; /*  si une bordure est nécessaire */
+    height: 64px;
+    overflow: hidden;
+}
+#header:after {
+    content : ""; /* On génère une chaine vide */
+    display : block;
+    clear : both;
+}
+.headerTransparent { opacity: 0.75 }
+#header > * { vertical-align: middle }
+#iconeApp {
+    display: inline-block;
+    /* personnalisez ces dimensions selon votre icone */
+    width: 64px;
+    height: 64px;
+    background-position: center center;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 64px;
+    background-image: url(favicon.ico);
+    background-size: 54px;
+    background-repeat: no-repeat;
+}
+#iconeApp:hover {
+    background-color: grey;
+    cursor: pointer;
+}
+#titreApp {
+    display: inline;
+    font-size: 25pt;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+    display: inline;
+    padding: 10px;
+    padding-left: 5px;
+    overflow: auto;
+    word-wrap: break-word;
+    -o-text-overflow: ellipsis; /* pour Opera 9 */
+    text-overflow: ellipsis; /* pour le reste du monde */
+}
+h1,
+h2,
+h3 {
+    border-bottom: 1px solid grey;
+    border-spacing: 2px;
+}
+p#presentation { padding: 5px }
+p#credits {
+    padding: 5px;
+    padding-top: 0px;
+    font-size: 8pt;
+}
+a:hover { text-decoration: none }
+#resultat { margin: 5px }
+.infos {
+    color: blue;
+    vertical-align: center;
+}
+.erreur {
+    color: red;
+    vertical-align: center;
+}
+.success {
+    color: green;
+    vertical-align: center;
+}
+#tmpTraitement { vertical-align: center }
+/* onglets */
+.onglet {
+    display: inline-block;
+    margin-left: 13px;
+    margin-right: 3px;
+    margin-bottom: 0;
+    padding: 3px;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid black;
+    border-bottom: 0;
+    cursor: pointer;
+}
+.onglet_0: hover,
+.onglet_1.hover { background-color: #bdc3c7 }
+.onglet_0 { background: #bdc3c7 }
+.onglet_1 {
+    background: #ecf0f1;
+    padding-bottom: 4px;
+}
+/* icones */
+.icon {
+    font-family: 'IcoMoon-Free';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Enable Ligatures ================ */
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    -o-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-infos:before { content: "\ea0c" }
+.icon-erreur:before { content: "\ea0d" }
+.icon-loading:before { content: "\e983" }
+.icon-valider:before { content: "\ea10" }
+.icon-image:before { content: "\e90d" }
+.icon-algo:before { content: "\e99d" }
+.icon-close:before { content: "\ea0f" }
+.icon-warning:before { content: "\ea08" }
+.icon-arrow-result:before { content: "\ea34" }
+.icon-duree:before { content: "\e94e" }
+.icon-ordinateur:before { content: "\e956" }
+.icon-web:before { content: "\e9c9" }
+.icon-doc:before { content: "\e926" }
+.icon-html:before { content: "\eA80" }
+.icon-question:before { content: "\eA09" }
+.icon-poubelle:before { content: "\e9AC" }
+.icon-update:before { content: "\ea2e" }
+.icon-recherche:before { content: "\e986" }
+#noscript,
+#canvasError {
+    font-size: 15pt;
+    font-weight: bold;
+    color: red;
+}
+/* popup */
+.white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+    font-family: "Open Sans", Arial, sans-serif;
+    -webkit-box-shadow: 0px 1px 20px #666666;
+    -moz-box-shadow: 0px 1px 20px #666666;
+    box-shadow: 0px 1px 20px #666666;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    overflow: auto;
+}
+label {
+    display: inline-block;
+    vertical-align: middle;
+}
+label.updateLabel {
+    display: inline-block;
+    width: 225px;
+    margin-right: 20px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.box {
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #ecf0f1;
+    margin: 5px;
+    overflow: auto;
+    border: 1px solid black;
+    margin-top: -1px;
+}
+button:not(.mfp-close), input[type=button] {
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 10px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    border: 0;
+    color: #2c3e50;
+    background-color: #E0E0E0;
+    box-shadow: 0px 5px 0px 0px #9E9E9E;
+}
+button:active:not(.mfp-close), input[type=button]:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+button:hover:not(.mfp-close), input[type=button]:hover {
+    background-color: #EEEEEE;
+}
+button[disabled], button[disabled=disabled] {
+    background-color: #BDBDBD;
+    color: #757575;
+    box-shadow: none;
+}
+button[disabled]:hover, button[disabled=disabled]:hover {
+    background-color: #BDBDBD;
+    color: #757575;
+}
+button[disabled]:active, button[disabled=disabled]:active {
+    transform: none;
+    -webkit-transform: none;
+    box-shadow: 0 0;
+}
+select {
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: border 0.3s;
+    background-color: white;
+}
+select:focus, select.focus {
+    border-bottom: solid 2px #969696;
+    outline: none;
+}
+input[type=text], input[type=number], textarea, input[type=textarea] {
+    font-size: 16px;
+    color: #34495e;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    background-color: white;
+    transition: border 0.3s;
+}
+input[type=text]:focus, input[type=text].focus, input[type=number]:focus, input[type=number].focus, textarea:focus, input[type=textarea]:focus, textarea.focus, input[type=textarea].focus {
+  border-bottom: solid 2px #969696;
+  outline: none;
+}
+input[type=file] {
+    margin-bottom: 5px;
+}
+#results { margin: 0px }
+#resultsList {
+    margin: 0;
+    display: inline;
+}
+.resultsLabel {
+    width: 50%;
+    overflow: hidden;
+    background: rgb(149, 165, 166) none repeat scroll 0% 0%;
+    padding: 0px;
+    display: inline-block;
+    margin: 0px;
+    margin-top: 5px;
+    vertical-align: top;
+    font-size: 12pt;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 15pt;
+    text-indent: 5px;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: auto;
+    text-overflow: ellipsis;
+}
+.inputResults {
+    width: 50%;
+    display: inline-block;
+    border: 0px !important;
+    padding: 0px !important;
+    margin: 0;
+    margin-top: 5px;
+    background: white;
+    border-radius: 0px !important;
+    font-size: 12pt !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    height: 15pt !important;
+    text-indent: 5px;
+    cursor: text;
+    box-shadow: inset -15px 0px 10px #bdc3c7;
+    -webkit-box-shadow: inset -15px 0px 10px #bdc3c7;
+    -moz-box-shadow: inset -15px 0px 10px #bdc3c7;
+    -o-box-shadow: inset -15px 0px 10px #bdc3c7;
+}
+#overlayLoading {
+    position: fixed;
+    z-index: 9999;
+    background: grey;
+    cursor: progress;
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    opacity: 0.50;
+}
+#javascriptErrors {
+    border: 1px solid grey;
+    margin: 5px;
+    margin-bottom: 10px;
+    padding: 5px;
+    display: none;
+    overflow: auto;
+    background: white;
+    height: auto;
+    max-height: 200px;
+    overflow: auto;
+}
+#resultsMargin {
+    margin: 8px;
+    margin-bottom: 0px;
+}
+#checkStyle {
+    visibility: hidden;
+    display: none;
+}
+#codeHTML {
+    width: 95%;
+    height: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media screen and (max-width: 768px) {
+    #presentation, .infos, .box, .onglet, select, input[type=text], input[type=number], textarea, input[type=textarea], #javascriptErrors {
+        font-size: 10pt;
+    }
+}
