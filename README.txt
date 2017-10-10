@@ -1,45 +1,17 @@
-  ____        _          _   _ ____  ___   _____                     _
- |  _ \  __ _| |_ __ _  | | | |  _ \|_ _| | ____|_ __   ___ ___   __| | ___ _ __
- | | | |/ _` | __/ _` | | | | | |_) || |  |  _| | '_ \ / __/ _ \ / _` |/ _ \ '__|
- | |_| | (_| | || (_| | | |_| |  _ < | |  | |___| | | | (_| (_) | (_| |  __/ |
- |____/ \__,_|\__\__,_|  \___/|_| \_\___| |_____|_| |_|\___\___/ \__,_|\___|_|
+<!-- Data URI Encoder README file -->
+<img src="https://raw.githubusercontent.com/Eliastik/data-uri-encoder/master/banner.png" width="306" alt="Javascript hqx" />
+<img src="https://raw.githubusercontent.com/Eliastik/data-uri-encoder/master/screenshot.png" width="640" alt="Screenshot" />
 
-Programme créé par Eliastik (www.eliastiksofts.com)
+## A propos du programme/About the program
 
-VERSION DU PROGRAMME : 1.0.4 (date de version : 4/02/2017)
+* Programme créé par Eliastik/Program created by Eliastik (www.eliastiksofts.com)
+* Online version/version en ligne : [http://eliastiksofts.com/data-uri-encoder/demo/](http://eliastiksofts.com/data-uri-encoder/demo/)
+* Available in english and in french
+* Disponible en anglais et en français
+* VERSION DU PROGRAMME : 1.1 (date de version : 10/10/2017)
+* LICENCE : GNU GPLv3 (voir LICENCE.txt et gpl-3.0.txt)
 
-LICENCE : GNU GPLv3 (voir LICENCE.txt et gpl-3.0.txt)
-
----------------
-
-* A propos de la version 1.0.4 (4/02/2017) :
-
-- Ajout d'un mode de débogage (désactivé par défaut, activable en modifiant le fichier « scripts.js ») - cela réactive la détection des erreurs Javascript ;
-- Petites corrections (bugs, textes, ajustements du code).
-
-* A propos de la version 1.0.3 (15/08/2016) :
-
-- Amélioration de la mise en page pour les mobiles ;
-- Amélioration de l'interface ;
-- Corrections du code et corrections de bugs.
-
-* A propos de la version 1.0.2 :
-
-- Ajout d'un module de mises à jour ;
-- Mise à jour des liens ;
-- Ajout d'une licence pour l'application (GNU GPL 3.0).
-
-* A propos de la version 1.0.1 :
-
-- Le champ contenant l'URL encodée ne peut désormais plus être édité ;
-- Il est désormais possible de visualiser une image ou un document HTML encodé en cliquant sur le lien en face du champ du résultat.
-
-* A propos de la version 1.0 :
-
-- Version initiale.
-
----------------
-
+This program allow you to convert images and texts in the form of a base64-encoded URI directly on your web browser.
 Ce programme vous permet convertir des images et des textes sous la forme d'une URI encodée en Base64 directement sur votre navigateur internet.
 
 Avant de l'utiliser, dézippez l'archive.
@@ -70,3 +42,41 @@ Découvrez également Javascript hqx (à cette adresse : http://eliastiksofts.com/j
 L'interface graphique a été conçue par moi-même, en utilisant quelques éléments piochés sur le web, dont Icomoon-Free, un thème d'icônes, ainsi que Magnific-Popup pour les fenêtres. La police de caractère utilisée est l'Open Sans.
 
 Ce programme utilise un script de cette page pour la conversion avec l'onglet « Image sur Internet ou autre (chemin absolu) » : https://davidwalsh.name/convert-image-data-uri-javascript
+
+## Journal des changements
+
+* Version 1.1 (10/10/2017) :
+
+- Traduction de l'application en anglais ;
+- Divers petits changements et corrections de bugs :
+    - Module de mises à jour amélioré (meilleure détection des mises à jour, corrections de bugs) ;
+    - Corrections du design ;
+    - Fichiers rangés correctement (dans le dossier assets) ;
+    - Mise à jour de certaines bibliothèques logicielles (Jquery notamment) ;
+    - Petites corrections du code et autres ajustements mineurs.
+
+* A propos de la version 1.0.4 (4/02/2017) :
+
+- Ajout d'un mode de débogage (désactivé par défaut, activable en modifiant le fichier « scripts.js ») - cela réactive la détection des erreurs Javascript ;
+- Petites corrections (bugs, textes, ajustements du code).
+
+* A propos de la version 1.0.3 (15/08/2016) :
+
+- Amélioration de la mise en page pour les mobiles ;
+- Amélioration de l'interface ;
+- Corrections du code et corrections de bugs.
+
+* A propos de la version 1.0.2 :
+
+- Ajout d'un module de mises à jour ;
+- Mise à jour des liens ;
+- Ajout d'une licence pour l'application (GNU GPL 3.0).
+
+* A propos de la version 1.0.1 :
+
+- Le champ contenant l'URL encodée ne peut désormais plus être édité ;
+- Il est désormais possible de visualiser une image ou un document HTML encodé en cliquant sur le lien en face du champ du résultat.
+
+* A propos de la version 1.0 :
+
+- Version initiale.

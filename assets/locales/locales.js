@@ -65,6 +65,7 @@ i18next.use(window.i18nextBrowserLanguageDetector).init({
                     "en": "English",
                     "changed": "Language changed!"
                 },
+                "titleIcon": "Home",
                 "confirm": "Confirm",
                 "original": "Original",
                 "result": "Conversions results:",
@@ -168,6 +169,7 @@ i18next.use(window.i18nextBrowserLanguageDetector).init({
                     "en": "English",
                     "changed": "Langue changée !"
                 },
+                "titleIcon": "Accueil",
                 "confirm": "Valider",
                 "result": "Résultats des conversions :",
                 "clearList": "Vider la liste des conversions",
