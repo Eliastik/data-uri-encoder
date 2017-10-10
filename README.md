@@ -1,5 +1,5 @@
 <!-- Data URI Encoder README file -->
-<img src="https://raw.githubusercontent.com/Eliastik/data-uri-encoder/master/banner.png" width="306" alt="Javascript hqx" />
+<img src="https://raw.githubusercontent.com/Eliastik/data-uri-encoder/master/banner.png" alt="Data URI Encoder" />
 <img src="https://raw.githubusercontent.com/Eliastik/data-uri-encoder/master/screenshot.png" width="640" alt="Screenshot" />
 
 ## A propos du programme/About the program
