@@ -1,5 +1,5 @@
 <!-- Data URI Encoder README file -->
-<img src="https://raw.githubusercontent.com/Eliastik/data-uri-encoder/master/banner.png" width="306" alt="Javascript hqx" />
+<img src="https://raw.githubusercontent.com/Eliastik/data-uri-encoder/master/banner.png" alt="Data URI Encoder" />
 <img src="https://raw.githubusercontent.com/Eliastik/data-uri-encoder/master/screenshot.png" width="640" alt="Screenshot" />
 
 ## A propos du programme/About the program
@@ -46,37 +46,31 @@ Ce programme utilise un script de cette page pour la conversion avec l'onglet « 
 ## Journal des changements
 
 * Version 1.1 (10/10/2017) :
-
-- Traduction de l'application en anglais ;
-- Divers petits changements et corrections de bugs :
-    - Module de mises à jour amélioré (meilleure détection des mises à jour, corrections de bugs) ;
-    - Corrections du design ;
-    - Fichiers rangés correctement (dans le dossier assets) ;
-    - Mise à jour de certaines bibliothèques logicielles (Jquery notamment) ;
-    - Petites corrections du code et autres ajustements mineurs.
+    - Traduction de l'application en anglais ;
+    - Divers petits changements et corrections de bugs :
+        - Module de mises à jour amélioré (meilleure détection des mises à jour, corrections de bugs) ;
+        - Corrections du design ;
+        - Fichiers rangés correctement (dans le dossier assets) ;
+        - Mise à jour de certaines bibliothèques logicielles (Jquery notamment) ;
+        - Petites corrections du code et autres ajustements mineurs.
 
 * A propos de la version 1.0.4 (4/02/2017) :
-
-- Ajout d'un mode de débogage (désactivé par défaut, activable en modifiant le fichier « scripts.js ») - cela réactive la détection des erreurs Javascript ;
-- Petites corrections (bugs, textes, ajustements du code).
+    - Ajout d'un mode de débogage (désactivé par défaut, activable en modifiant le fichier « scripts.js ») - cela réactive la détection des erreurs Javascript ;
+    - Petites corrections (bugs, textes, ajustements du code).
 
 * A propos de la version 1.0.3 (15/08/2016) :
-
-- Amélioration de la mise en page pour les mobiles ;
-- Amélioration de l'interface ;
-- Corrections du code et corrections de bugs.
+    - Amélioration de la mise en page pour les mobiles ;
+    - Amélioration de l'interface ;
+    - Corrections du code et corrections de bugs.
 
 * A propos de la version 1.0.2 :
-
-- Ajout d'un module de mises à jour ;
-- Mise à jour des liens ;
-- Ajout d'une licence pour l'application (GNU GPL 3.0).
+    - Ajout d'un module de mises à jour ;
+    - Mise à jour des liens ;
+    - Ajout d'une licence pour l'application (GNU GPL 3.0).
 
 * A propos de la version 1.0.1 :
-
-- Le champ contenant l'URL encodée ne peut désormais plus être édité ;
-- Il est désormais possible de visualiser une image ou un document HTML encodé en cliquant sur le lien en face du champ du résultat.
+    - Le champ contenant l'URL encodée ne peut désormais plus être édité ;
+    - Il est désormais possible de visualiser une image ou un document HTML encodé en cliquant sur le lien en face du champ du résultat.
 
 * A propos de la version 1.0 :
-
-- Version initiale.
+    - Version initiale.
