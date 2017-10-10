@@ -271,7 +271,7 @@ var kona = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
 $(document).keydown(function(e) {
     if (e.keyCode === kona[nbk++]) {
         if (nbk === kona.length) {
-            $("#iconeApp").css("background-image", "url(images/pacman.gif)");
+            $("#iconeApp").css("background-image", "url(assets/img/pacman.gif)");
             $("#iconeApp").attr("title", "Pac-man ! (retour à l'accueil)");
             $("#infosMagic").show();
             nbk = 0;
