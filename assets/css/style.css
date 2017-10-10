@@ -1,22 +1,21 @@
-/* Style Data URI Encoder
-
-Copyright (C) 2016 Eliastik (eliastiksofts.com)
-
-Ce fichier fait partie de Data URI Encoder.
-
-Data URI Encoder est un logiciel libre ; vous pouvez le redistribuer ou le
-modifier suivant les termes de la GNU General Public License telle que
-publiée par la Free Software Foundation ; soit la version 3 de la licence,
-soit (à votre gré) toute version ultérieure.
-
-Data URI Encoder est distribué dans l'espoir qu'il sera utile, mais SANS
-AUCUNE GARANTIE ; sans même la garantie tacite de QUALITÉ MARCHANDE ou
-d'ADÉQUATION à UN BUT PARTICULIER. Consultez la GNU General Public License
-pour plus de détails.
-
-Vous devez avoir reçu une copie de la GNU General Public License en même
-temps que Data URI Encoder ; si ce n'est pas le cas,
-consultez <http://www.gnu.org/licenses>. */
+/* Data URI Encoder
+ *
+ * Copyright (C) 2015-2017 Eliastik (eliastiksofts.com)
+ *
+ * This file is part of Data URI Encoder.
+ *
+ * Data URI Encoder is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Data URI Encoder is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Data URI Encoder.  If not, see <http://www.gnu.org/licenses/>. */
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
@@ -146,7 +145,7 @@ p#presentation { padding: 5px }
 p#credits {
     padding: 5px;
     padding-top: 0px;
-    font-size: 8pt;
+    font-size: 10pt;
 }
 a:hover { text-decoration: none }
 #resultat { margin: 5px }
@@ -254,6 +253,19 @@ label.updateLabel {
     margin-right: 20px;
     vertical-align: middle;
     font-weight: bold;
+}
+label.labelNormal {
+    display: inline-block;
+    width: initial;
+    margin-right: 0;
+    vertical-align: middle;
+}
+#contenu_onglet_updateForm > label {
+    font-weight: bold;
+    display: inline-block;
+    width: 225px;
+    margin-right: 20px;
+    vertical-align: middle;
 }
 .box {
     border-radius: 10px;

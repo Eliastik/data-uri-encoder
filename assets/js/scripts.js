@@ -1,29 +1,21 @@
-/* Script Data URI Encoder
-
-Copyright (C) 2016 Eliastik (eliastiksofts.com)
-
-Ce fichier fait partie de Data URI Encoder.
-
-Le code JavaScript de ce fichier est un logiciel libre : vous
-pouvez le redistribuer et/ou le modifier selon les termes de la
-licence GNU General Public License (GNU GPL) telle que
-publiée par la Free  Software Foundation, en version 3 de
-la licence, ou (à votre discrétion) toute version ultérieure. Le code
-est distribué SANS AUCUNE GARANTIE ; sans même la garantie
-tacite de QUALITÉ MARCHANDE ou d'ADÉQUATION À UN BUT PARTICULIER.
-Consulter la GNU GPL pour plus de détails.
-
-En tant que permission supplémentaire selon les termes de la GNU
-GPL version 3 section 7, vous pouvez distribuer des formes
-« non source » (par ex., minimisées ou compactées) de ce code
-sans la copie de la GNU GPL normalement requise section 4, à
-condition d'inclure cet avis de licence et une URL par
-laquelle les destinataires peuvent accéder au code source
-correspondant.
-
-Vous devez avoir reçu une copie de la GNU General Public License en même
-temps que Data URI Encoder ; si ce n'est pas le cas,
-consultez <http://www.gnu.org/licenses>. */
+/* Data URI Encoder
+ *
+ * Copyright (C) 2015-2017 Eliastik (eliastiksofts.com)
+ *
+ * This file is part of Data URI Encoder.
+ *
+ * Data URI Encoder is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Data URI Encoder is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Data URI Encoder.  If not, see <http://www.gnu.org/licenses/>. */
 // Configuration de l'application :
 var versionApplication = "1.0.4"; // Version de l'application
 var debugMode = false; // Mettre à true pour activer le mode debug (affichage des erreurs), false pour le désactiver
@@ -97,18 +89,18 @@ function validFirstForm() {
                 var cheminImg2 = reader.result; // on lit le fichier
                 if (cheminImg2.trim() == "") { // non utilisé
                     $("#erreurFormOne").show();
-                    $("#erreurFormOne").html("<span class=\"icon icon-erreur\"></span> Vous n'avez entré aucun chemin d'image. Veuillez réessayer.");
+                    $("#erreurFormOne").html("<span class=\"icon icon-erreur\"></span> " + i18next.t("processing.emptyPath"));
                     return false;
                 } else { // si tout va bien
                     $("#erreurFormOne").hide();
                     $("#erreurFormOne").html("");
                     numImageSelectionOrdi++;
                     var elAP = document.createElement("li");
-                    elAP.innerHTML = '<label class="resultsLabel"><a href="#" onclick="linkToUrl(imageSelectOrdi' + numImageSelectionOrdi + '.value);" title="Ouvrir l\'image dans un nouvel onglet">Image selectionnée sur l\'ordinateur n°' + numImageSelectionOrdi + '</a></label><input type="text" class="inputResults" id="imageSelectOrdi' + numImageSelectionOrdi + '" value="' + cheminImg2 + '" onFocus="select();" readonly="readonly" />';
+                    elAP.innerHTML = '<label class="resultsLabel"><a href="#" onclick="linkToUrl(imageSelectOrdi' + numImageSelectionOrdi + '.value);" title="'+ i18next.t("processing.newTab") +'">'+ i18next.t("processing.imgSelectedDevice") + numImageSelectionOrdi + '</a></label><input type="text" class="inputResults" id="imageSelectOrdi' + numImageSelectionOrdi + '" value="' + cheminImg2 + '" onFocus="select();" readonly="readonly" />';
                     var cheminImg2 = "";
                     document.getElementById("resultsList").appendChild(elAP);
                     elapsedTime = new Date().getTime() - startTime;
-                    $("#tmpTraitementOne").html("<span class=\"icon icon-duree\"></span> Durée du traitement : " + elapsedTime / 1000 + " seconde(s).");
+                    $("#tmpTraitementOne").html("<span class=\"icon icon-duree\"></span> " + i18next.t("processing.processingTime") + " " + elapsedTime / 1000 + " " + i18next.t("seconds"));
                     return true;
                 }
             }, false);
@@ -117,7 +109,7 @@ function validFirstForm() {
                 reader.readAsDataURL(fileInput.files[0]);
             } else {
                 $("#erreurFormOne").show();
-                $("#erreurFormOne").html("<span class=\"icon icon-erreur\"></span> Vous n'avez sélectionné aucune image. Veuillez réessayer.");
+                $("#erreurFormOne").html("<span class=\"icon icon-erreur\"></span> " + i18next.t("processing.noImgSelected"));
                 return false;
             }
 }
@@ -131,18 +123,18 @@ function validSecondForm() {
         $("#tmpTraitement").text(""); // on vide le texte du temps de traitement
         if (cheminImg.trim() == "") { // si rien n'est entré
             $("#erreurForm").show();
-            $("#erreurForm").html("<span class=\"icon icon-erreur\"></span> Vous n'avez entré aucun chemin d'image. Veuillez réessayer.");
+            $("#erreurForm").html("<span class=\"icon icon-erreur\"></span> " + i18next.t("processing.emptyPath"));
             return false;
         } else { // si tout va bien
             $("#erreurForm").hide();
             $("#erreurForm").html("");
             $("#erreurFormSecurite").show();
-            $("#erreurFormSecurite").html('<span class="icon icon-erreur"></span> Il est possible qu\'une erreur soit survenue. Peut-être que votre navigateur n\'est pas compatible ou qu\'il ait désactivé le chargement de l\'image par mesure de sécurité. Veuillez réessayer sur un autre navigateur. Il est également possible que l\'image soit introuvable. Dans ce cas, assurez-vous que le chemin de l\'image soit correct.');
+            $("#erreurFormSecurite").html('<span class="icon icon-erreur"></span> ' + i18next.t("processing.error"));
             getDataUriImg(cheminImg, function(url) {
                 if (url.trim() === '') {
                     $("#erreurFormSecurite").hide();
                     $("#erreurFormSecurite").html("");
-                    $("#erreurForm").html("<span class=\"icon icon-erreur\"></span> L\'URL semble incorrecte…");
+                    $("#erreurForm").html("<span class=\"icon icon-erreur\"></span> " + i18next.t("processing.incorrectURL"));
                     return false;
                 } else {
                     $("#erreurFormSecurite").hide();
@@ -150,10 +142,10 @@ function validSecondForm() {
                     var elAP = document.createElement("li");
                     elAP.textContent = cheminImg;
                     var texteFormatted = elAP.textContent;
-                    elAP.innerHTML = '<label class="resultsLabel"><a href="' + texteFormatted + '" target="_blank" title="Ouvrir l\'image dans un nouvel onglet">' + texteFormatted + '</a></label><input type="text" class="inputResults" value="' + url + '" onFocus="select();" readonly="readonly" />';
+                    elAP.innerHTML = '<label class="resultsLabel"><a href="' + texteFormatted + '" target="_blank" title="'+ i18next.t("processing.newTab") +'">' + texteFormatted + '</a></label><input type="text" class="inputResults" value="' + url + '" onFocus="select();" readonly="readonly" />';
                     document.getElementById("resultsList").appendChild(elAP);
                     elapsedTime = new Date().getTime() - startTime;
-                    $("#tmpTraitement").html("<span class=\"icon icon-duree\"></span> Durée du traitement : " + elapsedTime / 1000 + " seconde(s).");
+                    $("#tmpTraitement").html("<span class=\"icon icon-duree\"></span> " + i18next.t("processing.processingTime") + " " + elapsedTime / 1000 + " " + i18next.t("seconds"));
                     return true;
                 }
             });
@@ -168,7 +160,7 @@ function validFormHTML() {
     $("#tmpTraitement2").text(""); // on vide le texte du temps de traitement
     if (codeHTML.trim() == "") { // si rien n'est entré
         $("#erreurForm2").show();
-        $("#erreurForm2").html("<span class=\"icon icon-erreur\"></span> Vous n'avez rien entré. Veuillez réessayer.");
+        $("#erreurForm2").html("<span class=\"icon icon-erreur\"></span> " + i18next.t("processing.emptyHTML"));
         return false;
     } else { // si tout va bien
         $("#erreurForm2").hide();
@@ -176,12 +168,12 @@ function validFormHTML() {
         numHTMLEncode++;
         var htmlEncoded = getDataUriTextHTML(codeHTML);
         var elAP = document.createElement("li");
-        elAP.innerHTML = '<label class="resultsLabel"><a href="#" onclick="linkToUrl(codeHTMLEncodeNum' + numHTMLEncode + '.value);" title="Ouvrir le document dans un nouvel onglet">Document HTML n°' + numHTMLEncode + '</a></label><input type="text" id="codeHTMLEncodeNum' + numHTMLEncode + '" class="inputResults" value="" onFocus="select();" readonly="readonly" />';
+        elAP.innerHTML = '<label class="resultsLabel"><a href="#" onclick="linkToUrl(codeHTMLEncodeNum' + numHTMLEncode + '.value);" title="'+ i18next.t("processing.newTab") +'">' + i18next.t("processing.htmlDoc") + numHTMLEncode + '</a></label><input type="text" id="codeHTMLEncodeNum' + numHTMLEncode + '" class="inputResults" value="" onFocus="select();" readonly="readonly" />';
         document.getElementById("resultsList").appendChild(elAP);
         $('#codeHTMLEncodeNum' + numHTMLEncode).val(htmlEncoded);
         var htmlEncoded = "";
         elapsedTime = new Date().getTime() - startTime;
-        $("#tmpTraitement2").html("<span class=\"icon icon-duree\"></span> Durée du traitement : " + elapsedTime / 1000 + " seconde(s).");
+        $("#tmpTraitement2").html("<span class=\"icon icon-duree\"></span> " + i18next.t("processing.processingTime") + " " + elapsedTime / 1000 + " " + i18next.t("seconds"));
         return true;
     }
     return false;
@@ -276,7 +268,7 @@ $(document).keydown(function(e) {
     if (e.keyCode === kona[nbk++]) {
         if (nbk === kona.length) {
             $("#iconeApp").css("background-image", "url(assets/img/pacman.gif)");
-            $("#iconeApp").attr("title", "Pac-man ! (retour à l'accueil)");
+            $("#iconeApp").attr("title", i18next.t("magicTitle"));
             $("#infosMagic").show();
             nbk = 0;
             return true;
@@ -317,7 +309,7 @@ function linkToUrl(url) {
 }
 
 function viderListeConversions() {
-    openPopup("<h2>Confirmation</h2><span class=\"icon icon-question\"></span> Êtes-vous sûr de vouloir vider la liste des conversions ?<div style=\"margin-top: 15px;\"><button id=\"viderListeConversionOK\" onclick=\"viderListeConversionsOK();\"><span class=\"icon icon-valider\"></span> Oui</button> <button class=\"closeMagnificPopup\"><span class=\"icon icon-close\"></span> Non</button></div>");
+    openPopup("<h2>" + i18next.t("confirmClear.title") + "</h2><span class=\"icon icon-question\"></span> " + i18next.t("confirmClear.descr") + "<div style=\"margin-top: 15px;\"><button id=\"viderListeConversionOK\" onclick=\"viderListeConversionsOK();\"><span class=\"icon icon-valider\"></span> " + i18next.t("yes") + "</button> <button class=\"closeMagnificPopup\"><span class=\"icon icon-close\"></span> " + i18next.t("no") + "</button></div>");
 }
 
 function viderListeConversionsOK() {
@@ -345,10 +337,10 @@ function jsoncallbackUpdate(data) {
     $("#infoUpdateDispo").hide();
     var newVersionTest = versionApplication.strcmp(data.version);
     if(newVersionTest < 0) {
-        $("#infoUpdateDispo").html('<span class="icon icon-infos"></span> Une nouvelle version de l\'application est disponible !');
+        $("#infoUpdateDispo").html('<span class="icon icon-infos"></span> ' + i18next.t("update.newVersionAvailable"));
         $("#infoUpdateDispo").show();
     } else {
-        $("#infoUpdateSuccess").html('<span class="icon icon-valider"></span> Aucune mise à jour disponible. Vous disposez de la dernière version en date.');
+        $("#infoUpdateSuccess").html('<span class="icon icon-valider"></span> ' + i18next.t("update.noNewVersion"));
         $("#infoUpdateSuccess").show();
     }
     $("#nouvelleVerison").text(data.version);
@@ -366,7 +358,7 @@ function jsoncallbackUpdate(data) {
     });
     $("#lienNouvelleVersion").html(linksList);
     elapsedTimeSearchUpdate = new Date().getTime() - startTimeSearchUpdate;
-    $("#tmpTraitementUpdate").html("<span class=\"icon icon-duree\"></span> Durée de recherche de la mise à jour : " + elapsedTimeSearchUpdate / 1000 + " seconde(s).");
+    $("#tmpTraitementUpdate").html("<span class=\"icon icon-duree\"></span>  " + i18next.t("update.searchDuration") + " " + elapsedTimeSearchUpdate / 1000 + " " + i18next.t("update.seconds") + ".");
     clearTimeout(timeOutErrorUpdate);
     $("#btnUpdate").removeAttr("disabled");
 }
@@ -381,7 +373,7 @@ function checkUpdate() {
     $.getJSON(urlToUpdater);
 }
 function errorUpdate() {
-    $("#erreurUpdate").html("<span class=\"icon icon-erreur\"></span> Une erreur lors de la recherche d'une mise à jour semble être survenue. Vérifiez votre connexion internet, puis réessayez. Si le problème persiste, vérifiez également la disponibilité de la source de la mise à jour.");
+    $("#erreurUpdate").html("<span class=\"icon icon-erreur\"></span> " + i18next.t("update.error"));
     $("#erreurUpdate").show();
     $("#btnUpdate").removeAttr("disabled");
     clearTimeout(timeOutErrorUpdate);
@@ -389,15 +381,18 @@ function errorUpdate() {
 $("#btnUpdate").click(function() {
     checkUpdate();
 });
+$("#btnValiderLang").click(function() {
+    changeLng($("#languageSelect").val());
+});
 window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
-    if(debugMode == true) {
+    if(debugMode) {
         $("#infosDebug").show();
         nbErrorJavascript++;
-        var errorAlertText = '<h2>Informations de débogage sur l\'erreur Javascript n°' + nbErrorJavascript + '</h2><ul><li><strong>Code de l\'erreur :</strong> ' + errorMsg + '</li><li><strong>Script :</strong> ' + url + '</li><li><strong>Ligne :</strong> ' + lineNumber + '</li><li><strong>Colonne :</strong> ' + column + '</li><li><strong>StackTrace :</strong> ' + errorObj + '</li></ul><button class=\'closeMagnificPopup\'><span class=\'icon icon-close\'></span> Fermer la fenêtre</button>';
+        var errorAlertText = '<h2>' + i18next.t("debugMode.infosTitle") + nbErrorJavascript + '</h2><ul><li><strong>' + i18next.t("debugMode.errorCode") + '</strong> ' + errorMsg + '</li><li><strong>' + i18next.t("debugMode.script") + '</strong> ' + url + '</li><li><strong>' + i18next.t("debugMode.line") + '</strong> ' + lineNumber + '</li><li><strong>' + i18next.t("debugMode.column") + '</strong> ' + column + '</li><li><strong>' + i18next.t("debugMode.stacktrace") + '</strong> ' + errorObj + '</li></ul><button class=\'closeMagnificPopup\'><span class=\'icon icon-close\'></span> ' + i18next.t("closeWindow") + '</button>';
         var elError = document.createElement("li");
         var texteFormatted = addslashes(errorAlertText);
         elError.id = 'errorJavascriptNum' + nbErrorJavascript;
-        elError.innerHTML = '<span class="icon icon-erreur"></span> Erreur Javascript détectée (n° de l\'erreur : ' + nbErrorJavascript + '). Pour plus d\'informations sur l\'erreur, <a href="#" onclick="openPopup(\'' + texteFormatted + '\');">cliquez ici</a> ou jetez un coup d\'œil à la console Javascript. &nbsp;&nbsp;<span class="icon icon-close" style="color: black; cursor: pointer; font-size: 10pt;" title="Fermer" onclick="$(\'#errorJavascriptNum' + nbErrorJavascript + '\').fadeOut(250,function(){$(\'#errorJavascriptNum' + nbErrorJavascript + '\').html(\'\')});"></span>';
+        elError.innerHTML = '<span class="icon icon-erreur"></span> ' + i18next.t("debugMode.title") + ' ' + nbErrorJavascript + '). ' + i18next.t("debugMode.moreInfo") + ' <a href="#" onclick="openPopup(\'' + texteFormatted + '\');">' + i18next.t("debugMode.clickHere") + '</a> ' + i18next.t("debugMode.console") + ' &nbsp;&nbsp;<span class="icon icon-close" style="color: black; cursor: pointer; font-size: 10pt;" title="' + i18next.t("debugMode.close") + '" onclick="$(\'#errorJavascriptNum' + nbErrorJavascript + '\').fadeOut(250,function(){$(\'#errorJavascriptNum' + nbErrorJavascript + '\').html(\'\')});"></span>';
         document.getElementById("javascriptErrorsList").appendChild(elError);
         $("#javascriptErrors").fadeIn(250);
     }
