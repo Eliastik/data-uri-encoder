@@ -220,6 +220,7 @@ a:hover { text-decoration: none }
 .icon-poubelle:before { content: "\e9AC" }
 .icon-update:before { content: "\ea2e" }
 .icon-recherche:before { content: "\e986" }
+.icon-lang:before { content: "\e9ca" }
 #noscript,
 #canvasError {
     font-size: 15pt;
@@ -400,6 +401,12 @@ input[type=file] {
     height: auto;
     max-height: 200px;
     overflow: auto;
+}
+.contenu_onglet {
+    padding: 10px;
+}
+.contenu_onglet > input[type=button], button {
+    margin: 10px 0 10px 0 !important;
 }
 #resultsMargin {
     margin: 8px;

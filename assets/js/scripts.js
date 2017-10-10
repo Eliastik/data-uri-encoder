@@ -25,13 +25,13 @@ Vous devez avoir reçu une copie de la GNU General Public License en même
 temps que Data URI Encoder ; si ce n'est pas le cas,
 consultez <http://www.gnu.org/licenses>. */
 // Configuration de l'application :
-versionApplication = "1.0.4"; // Version de l'application
-debugMode = false; // Mettre à true pour activer le mode debug (affichage des erreurs), false pour le désactiver
-urlToUpdater = "http://www.eliastiksofts.com/data-uri-encoder/update.php?jsoncallback=?"; // URL vers le module permettant de vérifier les mises à jour de l'application
+var versionApplication = "1.0.4"; // Version de l'application
+var debugMode = false; // Mettre à true pour activer le mode debug (affichage des erreurs), false pour le désactiver
+var urlToUpdater = "http://www.eliastiksofts.com/data-uri-encoder/update.php?jsoncallback=?"; // URL vers le module permettant de vérifier les mises à jour de l'application
 // Fin configuration de l'application
-nbErrorJavascript = 0; // Nb d'erreurs Javascript (ne pas changer cette valeur)
-numImageSelectionOrdi = 0; // Nb d'images encodées (ne pas changer cette valeur)
-numHTMLEncode = 0; // Nb de documents HTML encodés (ne pas changer cette valeur)
+var nbErrorJavascript = 0; // Nb d'erreurs Javascript (ne pas changer cette valeur)
+var numImageSelectionOrdi = 0; // Nb d'images encodées (ne pas changer cette valeur)
+var numHTMLEncode = 0; // Nb de documents HTML encodés (ne pas changer cette valeur)
 $("#noscript").hide();
 $("#versionActuelle").text(versionApplication);
 // émuler trim sur les anciens navigateurs
@@ -57,6 +57,10 @@ if (Object.defineProperty &&
         });
     })();
 }
+// function pour comparer deux chaînes de version - https://stackoverflow.com/questions/1179366/is-there-a-javascript-strcmp
+String.prototype.strcmp = function(str) {
+    return ( ( this == str ) ? 0 : ( ( this > str ) ? 1 : -1 ) );
+};
 // Affichage mode debug
 if(debugMode == true) {
     $("#infosDebug").show();
@@ -339,7 +343,8 @@ function jsoncallbackUpdate(data) {
     $("#erreurUpdate").hide();
     $("#infoUpdateSuccess").hide();
     $("#infoUpdateDispo").hide();
-    if(data.version != versionApplication) {
+    var newVersionTest = versionApplication.strcmp(data.version);
+    if(newVersionTest < 0) {
         $("#infoUpdateDispo").html('<span class="icon icon-infos"></span> Une nouvelle version de l\'application est disponible !');
         $("#infoUpdateDispo").show();
     } else {
@@ -347,8 +352,19 @@ function jsoncallbackUpdate(data) {
         $("#infoUpdateSuccess").show();
     }
     $("#nouvelleVerison").text(data.version);
-    $("#changementsVersion").html(data.changements);
-    $("#lienNouvelleVersion").html(data.liensTelechargement);
+    $("#changementsVersion").text(data.changements);
+    var linksList = "";
+    $.each(data.liensTelechargementNew, function(index, value) {
+        var valueFormatted = '<a href="' + addslashes(value) + '" target="_blank">' + addslashes(value) + '</a>';
+        if(linksList == "") {
+            linksList = valueFormatted + ", ";
+        } else if(typeof(data.liensTelechargementNew[index + 1]) !== "undefined") {
+            linksList = linksList + valueFormatted + ", ";
+        } else {
+            linksList = linksList + valueFormatted;
+        }
+    });
+    $("#lienNouvelleVersion").html(linksList);
     elapsedTimeSearchUpdate = new Date().getTime() - startTimeSearchUpdate;
     $("#tmpTraitementUpdate").html("<span class=\"icon icon-duree\"></span> Durée de recherche de la mise à jour : " + elapsedTimeSearchUpdate / 1000 + " seconde(s).");
     clearTimeout(timeOutErrorUpdate);
@@ -381,7 +397,7 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
         var elError = document.createElement("li");
         var texteFormatted = addslashes(errorAlertText);
         elError.id = 'errorJavascriptNum' + nbErrorJavascript;
-        elError.innerHTML = '<span class="icon icon-erreur"></span> Erreur Javascript détectée (n° de l\'erreur : ' + nbErrorJavascript + '). Pour plus d\'informations sur l\'erreur, <a href="#" onclick="openPopup(\'' + texteFormatted + '\');">cliquez ici</a> ou jetez un coup d\'oeil à la console Javascript. &nbsp;&nbsp;<span class="icon icon-close" style="color: black; cursor: pointer; font-size: 10pt;" title="Fermer" onclick="$(\'#errorJavascriptNum' + nbErrorJavascript + '\').fadeOut(250,function(){$(\'#errorJavascriptNum' + nbErrorJavascript + '\').html(\'\')});"></span>';
+        elError.innerHTML = '<span class="icon icon-erreur"></span> Erreur Javascript détectée (n° de l\'erreur : ' + nbErrorJavascript + '). Pour plus d\'informations sur l\'erreur, <a href="#" onclick="openPopup(\'' + texteFormatted + '\');">cliquez ici</a> ou jetez un coup d\'œil à la console Javascript. &nbsp;&nbsp;<span class="icon icon-close" style="color: black; cursor: pointer; font-size: 10pt;" title="Fermer" onclick="$(\'#errorJavascriptNum' + nbErrorJavascript + '\').fadeOut(250,function(){$(\'#errorJavascriptNum' + nbErrorJavascript + '\').html(\'\')});"></span>';
         document.getElementById("javascriptErrorsList").appendChild(elError);
         $("#javascriptErrors").fadeIn(250);
     }
