@@ -457,7 +457,10 @@ a:hover {
     margin-right: auto;
 }
 @media screen and (max-width: 768px) {
-    #presentation, .infos, .box, .onglet, select, input[type=text], input[type=number], textarea, input[type=textarea], #javascriptErrors {
-        font-size: 10pt;
+    #presentation, .infos, .box, .onglet, select, input[type=text], input[type=button], button, input[type=number], textarea, input[type=textarea], #javascriptErrors {
+        font-size: 10pt !important;
+    }
+    p#credits {
+        font-size: 8pt !important;
     }
 }
