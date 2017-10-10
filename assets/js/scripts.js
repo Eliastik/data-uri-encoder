@@ -96,7 +96,7 @@ function validFirstForm() {
                     $("#erreurFormOne").html("");
                     numImageSelectionOrdi++;
                     var elAP = document.createElement("li");
-                    elAP.innerHTML = '<label class="resultsLabel"><a href="#" onclick="linkToUrl(imageSelectOrdi' + numImageSelectionOrdi + '.value);" title="'+ i18next.t("processing.newTab") +'">'+ i18next.t("processing.imgSelectedDevice") + numImageSelectionOrdi + '</a></label><input type="text" class="inputResults" id="imageSelectOrdi' + numImageSelectionOrdi + '" value="' + cheminImg2 + '" onFocus="select();" readonly="readonly" />';
+                    elAP.innerHTML = '<label class="resultsLabel"><a href="#" onclick="linkToUrl(imageSelectOrdi' + numImageSelectionOrdi + '.value);" title="'+ i18next.t("processing.newTab") +'">'+ i18next.t("processing.imgSelectedDevice") + numImageSelectionOrdi + '</a></label><input type="text" class="inputResults" id="imageSelectOrdi' + numImageSelectionOrdi + '" value="' + cheminImg2 + '" onFocus="select();" readonly="readonly" /><div class="degrade-div"></div>';
                     var cheminImg2 = "";
                     document.getElementById("resultsList").appendChild(elAP);
                     elapsedTime = new Date().getTime() - startTime;
@@ -142,7 +142,7 @@ function validSecondForm() {
                     var elAP = document.createElement("li");
                     elAP.textContent = cheminImg;
                     var texteFormatted = elAP.textContent;
-                    elAP.innerHTML = '<label class="resultsLabel"><a href="' + texteFormatted + '" target="_blank" title="'+ i18next.t("processing.newTab") +'">' + texteFormatted + '</a></label><input type="text" class="inputResults" value="' + url + '" onFocus="select();" readonly="readonly" />';
+                    elAP.innerHTML = '<label class="resultsLabel"><a href="' + texteFormatted + '" target="_blank" title="'+ i18next.t("processing.newTab") +'">' + texteFormatted + '</a></label><input type="text" class="inputResults" value="' + url + '" onFocus="select();" readonly="readonly" /><div class="degrade-div"></div>';
                     document.getElementById("resultsList").appendChild(elAP);
                     elapsedTime = new Date().getTime() - startTime;
                     $("#tmpTraitement").html("<span class=\"icon icon-duree\"></span> " + i18next.t("processing.processingTime") + " " + elapsedTime / 1000 + " " + i18next.t("seconds"));
@@ -168,7 +168,7 @@ function validFormHTML() {
         numHTMLEncode++;
         var htmlEncoded = getDataUriTextHTML(codeHTML);
         var elAP = document.createElement("li");
-        elAP.innerHTML = '<label class="resultsLabel"><a href="#" onclick="linkToUrl(codeHTMLEncodeNum' + numHTMLEncode + '.value);" title="'+ i18next.t("processing.newTab") +'">' + i18next.t("processing.htmlDoc") + numHTMLEncode + '</a></label><input type="text" id="codeHTMLEncodeNum' + numHTMLEncode + '" class="inputResults" value="" onFocus="select();" readonly="readonly" />';
+        elAP.innerHTML = '<label class="resultsLabel"><a href="#" onclick="linkToUrl(codeHTMLEncodeNum' + numHTMLEncode + '.value);" title="'+ i18next.t("processing.newTab") +'">' + i18next.t("processing.htmlDoc") + numHTMLEncode + '</a></label><input type="text" id="codeHTMLEncodeNum' + numHTMLEncode + '" class="inputResults" value="" onFocus="select();" readonly="readonly" /><div class="degrade-div"></div>';
         document.getElementById("resultsList").appendChild(elAP);
         $('#codeHTMLEncodeNum' + numHTMLEncode).val(htmlEncoded);
         var htmlEncoded = "";

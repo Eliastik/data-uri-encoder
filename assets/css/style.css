@@ -93,7 +93,6 @@ body {
     -webkit-transform: translate3d(0,0,0);
     -o-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
-    /* personnaliser selon l'appli */
     border: 0; /*  si une bordure est nécessaire */
     height: 64px;
     overflow: hidden;
@@ -342,12 +341,23 @@ input[type=text]:focus, input[type=text].focus, input[type=number]:focus, input[
   outline: none;
 }
 input[type=file] {
+    padding: 5px 0 5px 0;
+    margin-top: 5px;
     margin-bottom: 5px;
+}
+a, a:visited {
+    color: #1973AE !important;
+}
+a:hover {
+    text-decoration: none;
 }
 #results { margin: 0px }
 #resultsList {
     margin: 0;
     display: inline;
+}
+#resultsList li {
+    overflow: hidden;
 }
 .resultsLabel {
     width: 50%;
@@ -385,10 +395,21 @@ input[type=file] {
     height: 15pt !important;
     text-indent: 5px;
     cursor: text;
-    box-shadow: inset -15px 0px 10px #bdc3c7;
-    -webkit-box-shadow: inset -15px 0px 10px #bdc3c7;
-    -moz-box-shadow: inset -15px 0px 10px #bdc3c7;
-    -o-box-shadow: inset -15px 0px 10px #bdc3c7;
+}
+.degrade-div {
+    width: 50px;
+    height: 32px;
+    margin-top: -35px;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    background: -moz-linear-gradient(0deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255,255,255,0.45)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(0deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(0deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(0deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#FFFFFF',GradientType=1 );
 }
 #overlayLoading {
     position: fixed;
