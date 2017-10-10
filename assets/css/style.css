@@ -278,7 +278,7 @@ label.labelNormal {
 button:not(.mfp-close), input[type=button] {
     border-radius: 5px;
     padding: 10px 15px;
-    font-size: 15px;
+    font-size: 12pt;
     text-decoration: none;
     margin: 10px;
     color: #fff;
